@@ -1,3 +1,4 @@
+const project = require("../models/project.js");
 const Project = require("../models/project.js");
 
 exports.getProjects = async () => {
@@ -28,4 +29,8 @@ exports.updateProject = async (id, projectData) => {
   })
     .lean()
     .exec();
+};
+
+exports.deleteProject = async (id) => {
+  await Project.findByIdAndDelete(id).exec();
 };
